@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8"/>
+        <base href="http://localhost:8080/FH_Kufstein_WCIS17/WS17_MedienImWeb/Abschlussprojekt/index.html"/>
+        <link rel="stylesheet" href="css/commonstyle.css" type="text/css">
+        <link rel="stylesheet" href="css/style.css" type="text/css">
+        <link rel="stylesheet" href="font/material-icons.css" type="text/css">
+        <script type="text/javascript" src="library/p5.min.js"></script>
+        <script type="text/javascript" src="library/p5.dom.min.js"></script>
+        <script type="text/javascript" src="library/p5.sound.min.js"></script> 
+        <script type="text/javascript" src="library/moment-develop/moment.js"></script>  
+    </head>
+    <body>
+        <div id="menu">
+            <div id="menuRight">
+                <div id="buttonHome">    
+                    <i class="material-icons" title="Home" style="color: #b6b6b6">&#xE88A</i>
+                </div>    
+            </div>
+            <div id="menuLeft">
+                <div id="ctrlRadio">
+                    <span class="radio">
+                        <input class="type" type="radio" name="visuType" value="1" checked>
+                        <label for="type">Bar</label>
+                    </span>
+                    <span class="radio">
+                        <input class="type" type="radio" name="visuType" value="2">
+                        <label for="type">Circular</label>
+                    </span>
+                    <span class="radio">                        
+                        <input class="type" type="radio" name="visuType" value="3" >
+                        <label for="type">Waveform</label>
+                    </span>
+                </div>
+                <div id="sliderCtrl" title="Sound Rate Slider">
+                    <div class="slider">
+                            <span class="sliderText">Sound Volume <p class="sliderValue" id="sliderValueVolume"></p></span>
+                            <div id="sliderVolumeCtrl"></div>
+                        </div>
+                    <div class="slider">
+                        <span class="sliderText">Sound Rate: <p class="sliderValue" id="sliderValueRate"></p></span>
+                        <div id="sliderRateCtrl"></div>
+                    </div>
+                </div> 
+            </div>  
+            <div class="ctrl">
+                <a class="ctrlButton" id="playButton" onclick="backward()"><i class="material-icons"  title="Backward" id="jumpIcon" style="color: #b6b6b6">&#xE020</i></a>
+                <a class="ctrlButton" id="playButton" onclick="play()"><i class="material-icons"  title="Pause" id="playIcon" style="color: #b6b6b6">&#xE036</i></a>
+                <!--<a class="ctrlButton" id="stopButton" onclick="stop()"><i class="material-icons" title="Stop" id="stopIcon" style="color: #b6b6b6">&#xE047</i></a>-->
+                <a class="ctrlButton" id="playButton" onclick="forward()"><i class="material-icons"  title="Forward" id="jumpIcon" style="color: #b6b6b6">&#xE01F</i></a>
+            </div>
+              
+           
+            <div id="soundInfo">
+                    <span class="soundText">Duration: <p class="soundValue" id="soundValueDuration"></p></span>
+                    <span class="soundText">Current Time: <p class="soundValue" id="soundValueCurrentTime"></p></span>
+                    <span class="soundText">Centroid: <p class="soundValue" id="soundValueCentroid"></p></span>
+                    <span class="soundText">Sample Rate: <p class="soundValue" id="soundValueSampleRate"></p></span>
+                    <span class="soundText">Frames: <p class="soundValue" id="soundValueFrames"></p></span>
+                    <span class="soundText">Frequency: <p class="soundValue" id="soundValueFrequency"></p></span>
+                    <span class="soundText">Frequency Energy: <p class="soundValue" id="soundValueEnergy"></p></span>                
+                </div>
+        </div>
+        <script type="text/javascript" src="js/sound.js"></script>
+        <script type="text/javascript">
+            document.getElementById("buttonHome").onclick = function(){
+                location.href="./index.html";
+            }
+        </script>
+
+    </body>
+    
+</html>

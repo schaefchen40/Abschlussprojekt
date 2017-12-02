@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8"/>
+        <base href="http://localhost:8080/FH_Kufstein_WCIS17/WS17_MedienImWeb/Abschlussprojekt/index.html"/>
+        <link rel="stylesheet" href="css/commonstyle.css" type="text/css">
+        <link rel="stylesheet" href="css/start.css" type="text/css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+        <script type="text/javascript" src="library/p5.min.js"></script>
+    </head>
+    <body>  
+        <div id="welcome">
+            <div id="textWelcome">
+                <h1>
+                    <p>Welcome to</p>
+                    <p id="projName">"Fun with Sound"</p>
+                </h1>
+                <p>What do you want to do?</p>
+            </div>
+            <div id="welcomeStandardButton">
+                <button class="btn" id="btnAnalyze">Analyze</button>
+                <button class="btn" id="btnPlay">Play</button>
+            </div>
+            <div id=selection>
+                <div id="welcomeSelectionAnalyze" style="display: none;">
+                    <div class="selectionDiv">
+                        <form id="ctrlRadioAnalyze">
+                            <input class="selector" id="selectorSuprise" type="radio" name="file" value="1" checked>
+                            <label for="selectorSuprise">Suprise me</label>
+                            <input class="selector" id="selectorFile" type="radio" name="file" value="2" >
+                            <label for="selectorFile">Choose own file</label>
+                        </form>
+                        <input class="addButton" id="fileButton" style="display: none;" type="file" accept="audio/*">
+                    </div>
+                    <button id="startButtonAnalyze">Start</button>
+                </div>
+                <div id="welcomeSelectionPlay" style="display: none;">
+                    <div class="selectionDiv">
+                        <form id="ctrlRadioPlay" action="play/index.html" method="GET">
+                            <input class="selector" id="visual1" type="radio" name="visual" value="1" checked>
+                            <label for="visual1">Suprise me</label>
+                            <input class="selector" id="visual2" type="radio" name="visual" value="2">
+                            <label for="visual2">Piano</label>
+                            <input class="selector" id="visual3" type="radio" name="visual" value="3">
+                            <label for="visual3">Nothing yet</label>
+                            <br>
+                            <input id="startButtonPlay" type="submit" value="Start" />
+                        </form>
+                    </div>
+                    <!--<button id="startButtonPlay">Start</button>-->
+                    
+                </div>
+            </div>
+        </div>
+        <div id="footer">
+            <a class="link" href="html/about.html">About us</a>
+        </div>
+        <script type="text/javascript" src="js/home.js"></script>
+        <script type="text/javascript">
+            document.getElementById("startButtonAnalyze").onclick = function () {
+                location.href = "analyze/index.html";
+            };
+            document.getElementById("startButtonPlay").onclick = function () {
+                location.href = "play/index.html";
+            };
+        </script>
+        <script type="text/javascript">
+            document.getElementById("btnAnalyze").onclick = function () {           
+                if(document.getElementById("welcomeSelectionPlay").style.display == "block"){
+                    document.getElementById("welcomeSelectionPlay").style.display = "none";
+                  
+                    if(document.querySelector('input[name="file"]:checked').value == 2){
+                        document.getElementById("fileButton").style.display = "block";    
+                    }else if(document.querySelector('input[name="file"]:checked').value == 1){
+                        document.getElementById("fileButton").style.display = "none";    
+                    }           
+                    document.getElementById("welcomeSelectionAnalyze").style.display = "block";
+                }else if(document.getElementById("welcomeSelectionPlay").style.display == "none" && document.getElementById("welcomeSelectionAnalyze").style.display == "none"){
+                    document.getElementById("welcomeSelectionAnalyze").style.display="block";
+                }
+            }
+
+            document.getElementById("selectorFile").onclick = function () { 
+                if(document.querySelector('input[name="file"]:checked').value == 2){
+                    document.getElementById("fileButton").style.display = "block";    
+                }
+            }
+            document.getElementById("selectorSuprise").onclick = function () { 
+                if(document.querySelector('input[name="file"]:checked').value == 1){
+                    document.getElementById("fileButton").style.display = "none";
+                }
+            }
+            
+        </script>
+        <script type="text/javascript">
+            document.getElementById("btnPlay").onclick = function () {
+                if(document.getElementById('welcomeSelectionAnalyze').style.display == "block"){
+                    if(document.getElementById("fileButton").style.display == "block"){
+                        document.getElementById("fileButton").style.display = "none";     
+                    }
+                    document.getElementById("welcomeSelectionAnalyze").style.display = "none";
+                    document.getElementById("welcomeSelectionPlay").style.display = "block";
+                }else if (document.getElementById("welcomeSelectionPlay").style.display == "none" && document.getElementById('welcomeSelectionAnalyze').style.display == "none"){
+                    document.getElementById("welcomeSelectionPlay").style.display = "block";
+                }
+            }
+        </script>
+
+    </body>
+    
+</html>

@@ -1,0 +1,97 @@
+body{   
+    font-family: "Tahoma", "Courier New", monospace;
+    animation: colorchange 224s; /* animation-name followed by duration in seconds*/
+    /* you could also use milliseconds (ms) or something like 2.5s */
+    -webkit-animation: colorchange 224s; /* Chrome and Safari */
+}
+div.content{
+    width: 80%;
+    margin: 50px 40px 5px 40px;
+}
+table{
+    border-collapse: collapse;
+    width: 50%;
+}
+
+table, th, td{
+    /*border-bottom: 1px solid #b8b8b8;*/
+    border: none;
+}
+
+td.tdPic{
+    text-align: center;
+    width: 180px;
+    padding: 12px 0 12px 0;
+}
+
+img.personalPic{
+    width: 121px;
+    height: 124px;   
+}
+
+.personalInfo{
+    vertical-align: top;
+    padding: 30px 15px 5px 15px;
+}
+span{
+    display: block;
+    width: 100%;
+}
+#buttonHome{
+    float: right;
+    padding: 0 30px 0 0;
+}
+
+
+@keyframes colorchange{ 
+    0%   {background: rgb(0, 0, 0);}
+    8%  {background: rgb(62, 80, 87);}
+    20%  {background: rgb(116, 158, 155);}
+    30%  {background: rgb(247, 214, 26);}
+    40%  {background: rgb(247, 199, 44);}
+    50% {background: rgb(245, 103, 9);}
+    60% {background: rgb(207, 80, 0);}
+    70% {background: rgb(141, 54, 1);}
+    80% {background: rgb(0, 44, 102);}
+    90% {background: rgb(0, 24, 56);}
+    90% {background: rgb(0, 0, 0);}
+
+    0%   {color: rgb(184, 184, 184);}
+    15%  {color: rgb(240, 240, 240);}
+    20%  {color: rgb(50, 50, 50);}
+    35%  {color: rgb(70, 70, 70);}
+    40%  {color: rgb(85, 85, 85);}
+    50%  {color: rgb(50, 50, 50);}
+    60%  {color: rgb(55, 55, 55);}
+    70%  {color: rgb(120, 120, 120);}
+    80%  {color: rgb(180, 180, 180);}
+    90%  {color: rgb(210, 210, 210);}
+    0%   {color: rgb(184, 184, 184);}
+}
+
+/* Safari and Chrome - necessary duplicate */
+@-webkit-keyframes colorchange{
+    0%   {background: rgb(0, 0, 0);}
+    8%  {background: rgb(62, 80, 87);}
+    20%  {background: rgb(116, 158, 155);}
+    30%  {background: rgb(247, 214, 26);}
+    40%  {background: rgb(247, 199, 44);}
+    50% {background: rgb(245, 103, 9);}
+    60% {background: rgb(207, 80, 0);}
+    70% {background: rgb(141, 54, 1);}
+    80% {background: rgb(0, 44, 102);}
+    90% {background: rgb(0, 24, 56);}
+    90% {background: rgb(0, 0, 0);}
+
+    0%   {color: rgb(184, 184, 184);}
+    15%  {color: rgb(240, 240, 240);}
+    20%  {color: rgb(50, 50, 50);}
+    35%  {color: rgb(70, 70, 70);}
+    40%  {color: rgb(85, 85, 85);}
+    50%  {color: rgb(50, 50, 50);}
+    60%  {color: rgb(55, 55, 55);}
+    70%  {color: rgb(120, 120, 120);}
+    80%  {color: rgb(180, 180, 180);}
+    90%  {color: rgb(210, 210, 210);}
+    0%   {color: rgb(184, 184, 184);}
+}

@@ -1,0 +1,75 @@
+body { 
+    border: 0px;
+    padding: 0px;
+    margin: 0px;
+    font-variant: small-caps;
+}
+
+div#welcome{
+    width: 50%;
+    height: auto;
+    position: absolute;
+    display: inline-block;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 0px 25px 15px #888888;
+    text-align: center;  
+}
+
+p#projName{
+    font-family: "Courier new", Times, serif;
+}
+button.btn{
+    width: 80px;
+}
+
+div#selection{
+    height: 100px;
+}
+
+input.selector{
+    display: inline-block;
+}
+
+form#ctrlRadioAnalyze, form#ctrlRadioPlay{
+    padding: 10px 0 0 0;
+}
+
+div.selectionDiv{
+    height: 70px;
+}
+
+input#fileButton{
+    margin: auto;
+    padding: 10px 0 10px 0;
+}
+
+
+div#footer{
+    width: 100%;
+    height: 5%;
+    background-color: none; 
+    padding: 0px;
+    margin: 0px;
+    
+    position: fixed;
+    bottom: 0px;
+    text-align: center;
+}
+
+.link:link, :visited {
+    color: rgb(132,132,132);
+}
+
+.link:hover {
+    color: hotpink;
+}
+
+.link:active {
+    color: blue;
+}
+
+
+
+
