@@ -7,6 +7,8 @@
         <link rel="stylesheet" href="css/start.css" type="text/css">
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
         <script type="text/javascript" src="library/p5.min.js"></script>
+        <script type="text/php" src="fileupload.php"></script>
+        <?php session_start(); ?>
     </head>
     <body>  
         <div id="welcome">
@@ -28,11 +30,19 @@
                             <input class="selector" id="selectorSuprise" type="radio" name="file" value="1" checked>
                             <label for="selectorSuprise">Suprise me</label>
                             <input class="selector" id="selectorFile" type="radio" name="file" value="2" >
-                            <label for="selectorFile">Choose own file</label>
-                        </form>
-                        <input class="addButton" id="fileButton" style="display: none;" type="file" accept="audio/*">
+                            <label for="selectorFile">Choose own file</label> 
+                        
+                            
+                        
+                    </form>
+                    <form id="fileUpload" action="fileupload.php" method="POST" enctype="multipart/form-data" value="<?php echo $_SESSION['$target_file'];?>">
+                        <input id="fileButton" name="fileToUpload" style="display: none;" type="file" accept="audio/*">
+                        <!--<input id="fileButtonSubmit" style="display: none;" type="submit" value="Upload Song" name="submit">-->
+                        <input id="startButtonAnalyze" name="fileToUpload" type="submit" value="Start"/>
+                        
+                    </form>
                     </div>
-                    <button id="startButtonAnalyze">Start</button>
+                    
                 </div>
                 <div id="welcomeSelectionPlay" style="display: none;">
                     <div class="selectionDiv">
@@ -44,7 +54,7 @@
                             <input class="selector" id="visual3" type="radio" name="visual" value="3">
                             <label for="visual3">Nothing yet</label>
                             <br>
-                            <input id="startButtonPlay" type="submit" value="Start" />
+                            <input id="startButtonPlay" type="submit" value="Start"/>
                         </form>
                     </div>
                     <!--<button id="startButtonPlay">Start</button>-->
@@ -54,6 +64,7 @@
         </div>
         <div id="footer">
             <a class="link" href="html/about.html">About us</a>
+            <a class="link" href="html/help.html">Help</a>
         </div>
         <script type="text/javascript" src="js/home.js"></script>
         <script type="text/javascript">
@@ -70,9 +81,11 @@
                     document.getElementById("welcomeSelectionPlay").style.display = "none";
                   
                     if(document.querySelector('input[name="file"]:checked').value == 2){
-                        document.getElementById("fileButton").style.display = "block";    
+                        document.getElementById("fileButton").style.display = "block";  
+                        //document.getElementById("fileButtonSubmit").style.display = "block";    
                     }else if(document.querySelector('input[name="file"]:checked').value == 1){
                         document.getElementById("fileButton").style.display = "none";    
+                        //document.getElementById("fileButtonSubmit").style.display = "none";    
                     }           
                     document.getElementById("welcomeSelectionAnalyze").style.display = "block";
                 }else if(document.getElementById("welcomeSelectionPlay").style.display == "none" && document.getElementById("welcomeSelectionAnalyze").style.display == "none"){
@@ -82,12 +95,14 @@
 
             document.getElementById("selectorFile").onclick = function () { 
                 if(document.querySelector('input[name="file"]:checked').value == 2){
-                    document.getElementById("fileButton").style.display = "block";    
+                    document.getElementById("fileButton").style.display = "block";   
+                    //document.getElementById("fileButtonSubmit").style.display = "block";   
                 }
             }
             document.getElementById("selectorSuprise").onclick = function () { 
                 if(document.querySelector('input[name="file"]:checked').value == 1){
                     document.getElementById("fileButton").style.display = "none";
+                    //document.getElementById("fileButtonSubmit").style.display = "none";  
                 }
             }
             
@@ -96,7 +111,8 @@
             document.getElementById("btnPlay").onclick = function () {
                 if(document.getElementById('welcomeSelectionAnalyze').style.display == "block"){
                     if(document.getElementById("fileButton").style.display == "block"){
-                        document.getElementById("fileButton").style.display = "none";     
+                        document.getElementById("fileButton").style.display = "none";   
+                        //document.getElementById("fileButtonSubmit").style.display = "none";    
                     }
                     document.getElementById("welcomeSelectionAnalyze").style.display = "none";
                     document.getElementById("welcomeSelectionPlay").style.display = "block";
@@ -105,7 +121,9 @@
                 }
             }
         </script>
-
+    <script>
+        document.cookie = "filename=; expires=Thu, 01 Jan 1970 00:00:00 UTC";
+    </script>
     </body>
     
 </html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <base href="http://localhost:8080/FH_Kufstein_WCIS17/WS17_MedienImWeb/Abschlussprojekt/index.html"/>        
+        <link rel="stylesheet" href="css/commonstyle.css" type="text/css">
+        <link rel="stylesheet" href="font/material-icons.css" type="text/css">
+        <link rel="stylesheet" href="css/help.css" type="text/css">
+
+    </head>
+    <body>
+        <form id="buttonHome">    
+            <i class="material-icons" title="Home" >&#xE88A</i>
+        </form>
+        
+        <div class="content">
+            <h1 align="center">Help</h1>
+            <h3><a href="html/help.html#helpAnalyze">Analyze</a></h3>
+            <p> </a>
+                <strong>Suprise Me:</strong> diese Option wählt zur Analyse ein beliebiges verfügbares Musikstück aus.<br>
+                <strong>Choose own file:</strong> diese Option ermöglicht dir zur Analyse das Hochladen einer von dir ausgewählten Audio Datei.
+                <br>
+                <br>
+            </p>
+            <h3><a href="html/help.html#helpPlay">Play</a></h3>
+            <p>
+                <strong>Suprise Me:</strong> diese Option zeigt einen Oscillator an, welcher Frequenzen modelliert.<br>
+                <strong>Piano</strong> diese Option zeigt grafisch die Tasten eines Pianos an, mit denen einzelne Tastentöne ausgegeben werden können.<br>
+                <strong>Nothing yet:</strong> blabla
+                <br>
+                <br>
+            </p>    
+            <h2 id="helpAnalyze">Visualisierungsmöglichkeiten unter "Analyze"</h2>
+            <h3>Auswahlmöglichkeiten</h3>
+            <p>
+                <ul>
+                    <li><strong>Bar:</strong> die Visualisierung erfolgt in Balkenform, die nebeneinander angeordnet sind</li>
+                    <li><strong>Circular:</strong> die Visualiserung erfolgt in Balkenform, die kreisförmig ausgehend von einem zentralen Punkt angeordnet sind</li>
+                    <li><strong>Waveform:</strong> die Visualisierung erfolgt in Form einer Welle</li>
+                </ul>
+                <br>
+                Über die <strong>Breite des Screens</strong> werden dir die <strong>Frequenzen</strong> deines ausgewählten Musikstücks anzeigt. Links ist der Startpunkt und rechts befindet sich die höchste Frequenz. Die Angabe erfolgt in Hertz.<br> 
+                Die <strong>Mausposition</strong> gibt mit einem vertikalen Strich an, auf welcher Frequenz du dich befindest. Die Angabe erfolgt in Hertz.<br>
+                <br>
+                <br>
+            </p>
+
+            <h3>Erklärung für Angaben auf der linken Seite</h3>
+            <p>
+                <ul>
+                    <li><strong>Sound Volume</strong> beeinflusst die Lautstärke des Musikstücks.</li>
+                    <li><strong>Sounr Rate</strong> beeinflusst die Wiedergabegeschwindigkeit des gewählten Musikstücks.</li>
+                </ul>
+            </p>
+            
+            <h3>Erklärung für Angaben auf der rechten Seite</h3>
+            <p>
+                <ul>
+                    <li><strong>Duration</strong> gibt dir Auskunft darüber, wie lange das gewählte Musikstück insgesamt dauert. Die Anzeige erfolgt in Minuten, Sekunden und Millisekunden.</li>
+                    <li><strong>Current time</strong> zeigt die aktuelle Abspielzeit des gewählten Musikstücks an. Die Anzeige erfolgt in Minuten, Sekunden und Millisekunden.</li> <!-- Ist das wirklich so? Wird die aktuelle Position angezeigt, oder wird die bereits abgelaufene Zeit angezeigt?-->
+                    <li><strong>Centroid</strong> ist ein Wert der dir Auskunft über die Klangfarbe des gewählten Musikstücks gibt. Es werden die Amplituden der Schallwellen ermittelt und davon das Zentrum ermittelt.</li>
+                    <li><strong>Sample Rate</strong> legt  die Anzahl der Samples (Abtastpunkte) pro Sekunde fest. (Computer abhängig?)</li>
+                    <li><strong>Frame Rate</strong> Output aus Sample rate.</li>
+                    <li><strong>Frequenzy</strong> blablabla </li>
+                    <li><strong>Frequenzy Energy</strong> blabla</li>
+                </ul>
+            </p>
+    
+            <h2 id="helpPlay">3 Frequenzmodulationen unter "Play"</h2>
+            <h3>Auswahlmöglichkeiten</h3>
+            <p>
+                <ul>
+                    <li><strong>Sine:</strong> Die Darstellung der Frequenzen erfolgt anhand der Sinusoid, welches eine sinusförmige Funktion darstellt. Sie entsteht durch Skalierung von Amplitude und Frequenz sowie Phasenverschiebung aus der Sinusfunktion.</li>
+                    <li><strong>Sawtooth:</strong> Die Darstellung der Frequenzen erfolgt als Kippschwingungen bzw. Sägezahnschwingungen. Diese Modulation ist eine besondere Form periodischer, nicht-sinusförmiger Schwingungen.</li>
+                    <li><strong>Square:</strong> Die Darstellung der Frequenzen erfolgt als Rechtecksignal bzw. Rechteckschwingungen. Es ist ein periodisches Signal, welches über der Zeit einen rechteckigen Verlauf aufweist.</li>
+                </ul>
+                Bei der Auswahl <strong>"Surprise Me"</strong> gibt die Mausposition die jeweilige abgespielte Frequenz an.<br>
+                Bei der Auswahl <strong>"Piano"</strong> wird ein Piano von den Tasten XXX – XXX angezeigt. Beeinflusst die Auswahl zur Frequenzmodulationen überhaupt das Piano?<br>
+                <br>
+                <br>
+            </p>
+            <p>
+                Wenn Sie <strong>Fragen</strong> haben oder uns ein <strong>Projekt vorschlagen</strong> möchte, können Sie uns jederzeit unter 171083731650@fh-kufstein.ac.at erreichen! Wir freuen uns auf Ihre Anfrage!
+            </p>
+    </div>
+    </body>
+</html>

@@ -16,9 +16,33 @@ var array = ["./media/wolke.mp3","./media/503.mp3","./media/ziemlichbestefreunde
 var textCount;
 
 
+
 function preload(){
+    var name = "filename=";
+    var decodedCookie = decodeURIComponent(document.cookie);
+    var ca = decodedCookie.split(";");
+    var cookieValue;
+    for(var i = 0; i <ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0) == " ") {
+            c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+            cookieValue = c.substring(name.length, c.length);
+        }
+    }
+    file = "./uploads/" + cookieValue;
+    
+    //file = getCookie("filename");
+    console.log("File: " + file);
+    if (cookieValue !== undefined){
+        console.log("CookieFile: " + file);
+    }else{
+        file = array[Math.floor(Math.random() * array.length)]; 
+        console.log("File: " + file);
+    }
     // setControlElements();
-    file = array[Math.floor(Math.random() * array.length)]; 
+    
    console.log(file);
    sound = loadSound(file); 
 }
@@ -44,8 +68,8 @@ function setup() {
     document.getElementById("sliderValueVolume").innerText=rateSlider.value(); 
     document.getElementById("sliderValueRate").innerText=rateSlider.value(); 
     //document.getElementById("sliderValueEnergy").innerText=energySlider.value() + " Hz";
-    //spectMax = 512;
-    spectMax = 256;
+    spectMax = 512;
+    //spectMax = 256;
     
     visual=1;
     if(window.innerWidth < 1024 && visual == 1){
@@ -129,13 +153,11 @@ function draw() {
     var frames = sound.frames();
     document.getElementById("soundValueFrames").innerText=frames; 
    // amp.toggleNormalize(true);
-    
-    if(visual == 1){
-        var spectrum = fft.analyze();       
-        var nyquist = sound.sampleRate() / 2;
-        var spectralCentroid = fft.getCentroid();
-        var mean_freq_index = spectralCentroid/(nyquist/spectrum.length);
-        
+   var spectrum = fft.analyze();  
+   var spectralCentroid = fft.getCentroid();   
+   var nyquist = sound.sampleRate() / 2;
+    if(visual == 1){          
+        var mean_freq_index = spectralCentroid/(nyquist/spectrum.length);      
         var freqPos = (width / spectrum.length) * mouseX;
         document.getElementById("soundValueFrequency").innerText= round(freqPos) +" Hz"; 
         
@@ -192,10 +214,10 @@ function draw() {
         }
         textCount = textCount + 1;
     }else if(visual == 2){
-        var spectrum = fft.analyze();
+        //var spectrum = fft.analyze();
         if(textCount == 20){
             document.getElementById("soundValueCentroid").innerText=round(spectralCentroid)+" Hz";
-            document.getElementById("soundValueSampleRate").innerText=round(sound.sampleRate())+" Hz";   
+            document.getElementById("soundValueSampleRate").innerText=round(sound.sampleRate())+" Hz"; 
             textCount = 0;
         }        
         // document.getElementById("soundValueCentroid").innerText=round(spectralCentroid)+" Hz";
@@ -223,9 +245,7 @@ function draw() {
             document.getElementById("soundValueCentroid").innerText=round(spectralCentroid)+" Hz";
             document.getElementById("soundValueSampleRate").innerText=round(sound.sampleRate())+" Hz";   
             textCount = 0;
-        }  
-        // document.getElementById("soundValueCentroid").innerText=round(spectralCentroid)+" Hz";
-        // document.getElementById("soundValueSampleRate").innerText=round(sound.sampleRate())+" Hz";  
+        }   
         noFill();
         beginShape();
         stroke(255,0,0); // waveform is red

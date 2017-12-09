@@ -10,9 +10,10 @@ var keyOffsetX = 200;
 var keyWidth = 45;
 var keyWidth2 = 35;
 var keyHeight = 200;
-var keyHeight2 = 90;
+var keyHeight2 = 95;
 var keySpace = 2;
-var note = [62, 64, 65, 67, 69, 71, 74, 76, 77, 79, 81, 83, 86, 88, 89, 91, 93];
+var diaton =    [[62, "D"] , [64, "E"] , [65, "F"] , [67, "G"] , [69, "A"] , [71, "B"] , [72, "C7"], [74, "D"] , [76, "E"] , [77, "F"] , [79, "G"] , [81, "A"] , [83, "B"] , [84, "C8"], [86, "D"], [88, "E"], [89, "F"], [91, "G"], [93, "A"]];
+var pentaton =  [[63, "Eb"], [66, "Gb"], [68, "Ab"], [70, "Bb"], [73, "Db"], [75, "Eb"], [78, "Gb"], [80, "Ab"], [82, "Bb"], [85, "Db"], [87, "Eb"], [90, "Gb"], [92, "Ab"], [94, "Bb"]];
 
 function setup(){
     createCanvas(window.innerWidth,window.innerHeight);
@@ -36,6 +37,7 @@ function setup(){
     else if(selection == "Piano"){
         osci.setType("triangle",0);
         document.getElementById("ctrlRadio").style.display = "none";
+        document.getElementById("soundInfo").style.display = "none";
     }
     else if(selection == "nothing"){
         osci.setType("sine",0);
@@ -74,6 +76,11 @@ function draw(){
 
         var freqRange = map(mouseX, 0, width, 0, 2000);
         var amplRange = map(mouseY, 0, height, 0, 1);
+
+        document.getElementById("soundValueFrequency").innerText = round(freqRange) +" Hz"; 
+        document.getElementById("soundValueAmplitude").innerText = Number((amplRange).toFixed(1)); 
+        Number((6.688689).toFixed(1));
+
         osci.freq(freqRange);
         osci.amp(amplRange);
     }
@@ -100,77 +107,219 @@ function draw(){
 
         fill(0,0,0);
         stroke(255, 255, 255);
-        rect(keyOffsetX + (keyWidth * 2 + keySpace * 2) / 2 - keyWidth2 / 2,height/2,keyWidth2,keyHeight2);
-        rect(keyOffsetX + ((keyWidth * 2 + keySpace * 3) / 2 - keyWidth2 / 2) * 4,height/2,keyWidth2,keyHeight2);
-        rect(keyOffsetX + ((keyWidth * 2 + keySpace * 4) / 2 - keyWidth2 / 2) * 5.4,height/2,keyWidth2,keyHeight2);
-        rect(keyOffsetX + ((keyWidth * 2 + keySpace * 5) / 2 - keyWidth2 / 2) * 6.7,height/2,keyWidth2,keyHeight2);
+        rect(keyOffsetX + (keyWidth + keySpace / 2) - keyWidth2 / 2,height/2,keyWidth2,keyHeight2);
 
+        rect(keyOffsetX + (keyWidth * 3 + keySpace * 2 + keySpace / 2) - keyWidth2 / 2,height/2,keyWidth2,keyHeight2);
+        rect(keyOffsetX + (keyWidth * 4 + keySpace * 3 + keySpace / 2) - keyWidth2 / 2,height/2,keyWidth2,keyHeight2);
+        rect(keyOffsetX + (keyWidth * 5 + keySpace * 4 + keySpace / 2) - keyWidth2 / 2,height/2,keyWidth2,keyHeight2);
+
+        rect(keyOffsetX + (keyWidth * 7 + keySpace * 6 + keySpace / 2) - keyWidth2 / 2,height/2,keyWidth2,keyHeight2);
+        rect(keyOffsetX + (keyWidth * 8 + keySpace * 7 + keySpace / 2) - keyWidth2 / 2,height/2,keyWidth2,keyHeight2);
+
+        rect(keyOffsetX + (keyWidth * 10 + keySpace * 9 + keySpace / 2) - keyWidth2 / 2,height/2,keyWidth2,keyHeight2);
+        rect(keyOffsetX + (keyWidth * 11 + keySpace * 10 + keySpace / 2) - keyWidth2 / 2,height/2,keyWidth2,keyHeight2);
+        rect(keyOffsetX + (keyWidth * 12 + keySpace * 11 + keySpace / 2) - keyWidth2 / 2,height/2,keyWidth2,keyHeight2);
+
+        rect(keyOffsetX + (keyWidth * 14 + keySpace * 13 + keySpace / 2) - keyWidth2 / 2,height/2,keyWidth2,keyHeight2);
+        rect(keyOffsetX + (keyWidth * 15 + keySpace * 14 + keySpace / 2) - keyWidth2 / 2,height/2,keyWidth2,keyHeight2);
         hit = false;
     }
 }
 function mousePressed() {  
-
-    if(mouseX < keyOffsetX + keyWidth && mouseX > keyOffsetX && mouseY < height/2 + keyHeight && mouseY > height/2){
-        osci.freq(midiToFreq(note[0]));
+    //Ende
+    if((mouseX < keyOffsetX + keyWidth && mouseX > keyOffsetX && mouseY < height/2 + keyHeight && mouseY > height/2) && 
+        !(mouseX < keyOffsetX + keyWidth && mouseX > keyOffsetX + (keyWidth + keySpace / 2) - keyWidth2 / 2 && mouseY < height/2 + keyHeight2 && mouseY > height/2)){
+        osci.freq(midiToFreq(diaton[0][0]));
+        console.log(diaton[0][0]);
+        document.getElementById("soundValueNote").innerText = diaton[0][1];
+        console.log(diaton[0][1]);
         hit = true;
-    }else if (mouseX < keyOffsetX + keySpace * 2 + keyWidth * 2 && mouseX > keyOffsetX + keySpace + keyWidth && mouseY < height/2 + keyHeight && mouseY > height/2){
-        osci.freq(midiToFreq(note[1]));
+    }//Anfang
+    else if ((mouseX < keyOffsetX + keySpace * 2 + keyWidth * 2 && mouseX > keyOffsetX + keySpace + keyWidth && mouseY < height/2 + keyHeight && mouseY > height/2) && 
+        !(mouseX < keyOffsetX + keyWidth + keySpace + keyWidth2 / 2 && mouseX > keyOffsetX + keyWidth + keySpace - keyWidth2 / 2 && mouseY < height/2 + keyHeight2 && mouseY > height/2)){
+        osci.freq(midiToFreq(diaton[1][0]));
+        document.getElementById("soundValueNote").innerText = diaton[1][1];
+        console.log(diaton[1][0]);
         hit = true;
-    }else if (mouseX < keyOffsetX + keySpace * 3 + keyWidth * 3 && mouseX > keyOffsetX + keySpace * 2 + keyWidth * 2 && mouseY < height/2 + keyHeight && mouseY > height/2){
-        osci.freq(midiToFreq(note[2]));
+    }//Ende
+    else if ((mouseX < keyOffsetX + keySpace * 3 + keyWidth * 3 && mouseX > keyOffsetX + keySpace * 2 + keyWidth * 2 && mouseY < height/2 + keyHeight && mouseY > height/2) &&
+        !(mouseX < keyOffsetX + keyWidth * 3 + keySpace * 2 && mouseX > keyOffsetX + keyWidth * 3 + keySpace * 2 - keyWidth2 / 2 && mouseY < height/2 + keyHeight2 && mouseY > height/2)){
+        osci.freq(midiToFreq(diaton[2][0]));
+        document.getElementById("soundValueNote").innerText = diaton[2][1];
+        console.log(diaton[2][0]);
         hit = true;
-    }else if (mouseX < keyOffsetX + keySpace * 4 + keyWidth * 4 && mouseX > keyOffsetX + keySpace * 3 + keyWidth * 3 && mouseY < height/2 + keyHeight && mouseY > height/2){
-        osci.freq(midiToFreq(note[3]));
+    }//Anfang und Ende
+    else if ((mouseX < keyOffsetX + keySpace * 4 + keyWidth * 4 && mouseX > keyOffsetX + keySpace * 3 + keyWidth * 3 && mouseY < height/2 + keyHeight && mouseY > height/2) && 
+        !(mouseX < keyOffsetX + keyWidth * 3 + keySpace * 3 + keyWidth2 / 2 && mouseX > keyOffsetX + keyWidth * 3 + keySpace * 3  && mouseY < height/2 + keyHeight2 && mouseY > height/2) && 
+        !(mouseX < keyOffsetX + keyWidth * 4 + keySpace * 3 && mouseX > keyOffsetX + keyWidth * 4 + keySpace * 3 - keyWidth2 / 2 && mouseY < height/2 + keyHeight2 && mouseY > height/2)){
+        osci.freq(midiToFreq(diaton[3][0]));
+        document.getElementById("soundValueNote").innerText = diaton[3][1];
+        console.log(diaton[3][0]);
         hit = true;
-    }else if (mouseX < keyOffsetX + keySpace * 5 + keyWidth * 5 && mouseX > keyOffsetX + keySpace * 4 + keyWidth * 4 && mouseY < height/2 + keyHeight && mouseY > height/2){
-        osci.freq(midiToFreq(note[4]));
+    }//Anfang und Ende
+    else if ((mouseX < keyOffsetX + keySpace * 5 + keyWidth * 5 && mouseX > keyOffsetX + keySpace * 4 + keyWidth * 4 && mouseY < height/2 + keyHeight && mouseY > height/2) &&
+        !(mouseX < keyOffsetX + keyWidth * 4 + keySpace * 4 + keyWidth2 / 2 && mouseX > keyOffsetX + keyWidth * 4 + keySpace * 4 - keyWidth2 / 2 && mouseY < height/2 + keyHeight2 && mouseY > height/2) &&
+        !(mouseX < keyOffsetX + keyWidth * 5 + keySpace * 4 && mouseX > keyOffsetX + keyWidth * 5 + keySpace * 4 - keyWidth2 / 2 && mouseY < height/2 + keyHeight2 && mouseY > height/2)){
+        osci.freq(midiToFreq(diaton[4][0]));
+        document.getElementById("soundValueNote").innerText = diaton[4][1];
+        console.log(diaton[4][0]);
         hit = true;
-    }else if (mouseX < keyOffsetX + keySpace * 6 + keyWidth * 6 && mouseX > keyOffsetX + keySpace * 5 + keyWidth * 5 && mouseY < height/2 + keyHeight && mouseY > height/2){
-        osci.freq(midiToFreq(note[5]));
+    }//Anfang
+    else if ((mouseX < keyOffsetX + keySpace * 6 + keyWidth * 6 && mouseX > keyOffsetX + keySpace * 5 + keyWidth * 5 && mouseY < height/2 + keyHeight && mouseY > height/2) && 
+        !(mouseX < keyOffsetX + keyWidth * 5 + keySpace * 5 + keyWidth2 / 2 && mouseX > keyOffsetX + keyWidth * 5 + keySpace * 5 && mouseY < height/2 + keyHeight2 && mouseY > height/2)){
+        osci.freq(midiToFreq(diaton[5][0]));
+        document.getElementById("soundValueNote").innerText = diaton[5][1];
+        console.log(diaton[5][0]);
         hit = true;
-    }else if (mouseX < keyOffsetX + keySpace * 7 + keyWidth * 7 && mouseX > keyOffsetX + keySpace * 6 + keyWidth * 6 && mouseY < height/2 + keyHeight && mouseY > height/2){
-        osci.freq(midiToFreq(note[6]));
+    }//Ende
+    else if ((mouseX < keyOffsetX + keySpace * 7 + keyWidth * 7 && mouseX > keyOffsetX + keySpace * 6 + keyWidth * 6 && mouseY < height/2 + keyHeight && mouseY > height/2) && 
+    !(mouseX < keyOffsetX + keyWidth * 7 + keySpace * 6 && mouseX > keyOffsetX + keyWidth * 7 + keySpace * 6 - keyWidth2 / 2 && mouseY < height/2 + keyHeight2 && mouseY > height/2)){
+        osci.freq(midiToFreq(diaton[6][0]));
+        document.getElementById("soundValueNote").innerText = diaton[6][1];
+        console.log(diaton[6][0]);
         hit = true;
-    }else if (mouseX < keyOffsetX + keySpace * 8 + keyWidth * 8 && mouseX > keyOffsetX + keySpace * 7 + keyWidth * 7 && mouseY < height/2 + keyHeight && mouseY > height/2){
-        osci.freq(midiToFreq(note[7]));
+    }//Anfang und Ende
+    else if ((mouseX < keyOffsetX + keySpace * 8 + keyWidth * 8 && mouseX > keyOffsetX + keySpace * 7 + keyWidth * 7 && mouseY < height/2 + keyHeight && mouseY > height/2) &&
+        !(mouseX < keyOffsetX + keyWidth * 7 + keySpace * 7 + keyWidth2 / 2 && mouseX > keyOffsetX + keyWidth * 7 + keySpace * 7 - keyWidth2 / 2 && mouseY < height/2 + keyHeight2 && mouseY > height/2) &&
+        !(mouseX < keyOffsetX + keyWidth * 8 + keySpace * 7 && mouseX > keyOffsetX + keyWidth * 8 + keySpace * 7 - keyWidth2 / 2 && mouseY < height/2 + keyHeight2 && mouseY > height/2)){
+        osci.freq(midiToFreq(diaton[7][0]));
+        document.getElementById("soundValueNote").innerText = diaton[7][1];
+        console.log(diaton[7][0]);
         hit = true;
-    }else if (mouseX < keyOffsetX + keySpace * 9 + keyWidth * 9 && mouseX > keyOffsetX + keySpace * 8 + keyWidth * 8 && mouseY < height/2 + keyHeight && mouseY > height/2){
-        osci.freq(midiToFreq(note[8]));
+    }//Anfang
+    else if ((mouseX < keyOffsetX + keySpace * 9 + keyWidth * 9 && mouseX > keyOffsetX + keySpace * 8 + keyWidth * 8 && mouseY < height/2 + keyHeight && mouseY > height/2) && 
+        !(mouseX < keyOffsetX + keyWidth * 8 + keySpace * 8 + keyWidth2 / 2 && mouseX > keyOffsetX + keyWidth * 8 + keySpace * 8 && mouseY < height/2 + keyHeight2 && mouseY > height/2)){
+        osci.freq(midiToFreq(diaton[8][0]));
+        document.getElementById("soundValueNote").innerText = diaton[8][1];
+        console.log(diaton[8][0]);
         hit = true;
-    }else if (mouseX < keyOffsetX + keySpace * 10 + keyWidth * 10 && mouseX > keyOffsetX + keySpace * 9 + keyWidth * 9 && mouseY < height/2 + keyHeight && mouseY > height/2){
-        osci.freq(midiToFreq(note[9]));
+    }//Ende
+    else if ((mouseX < keyOffsetX + keySpace * 10 + keyWidth * 10 && mouseX > keyOffsetX + keySpace * 9 + keyWidth * 9 && mouseY < height/2 + keyHeight && mouseY > height/2) && 
+        !(mouseX < keyOffsetX + keyWidth * 10 + keySpace * 9 && mouseX > keyOffsetX + keyWidth * 10 + keySpace * 9 - keyWidth2 / 2 && mouseY < height/2 + keyHeight2 && mouseY > height/2)){
+        osci.freq(midiToFreq(diaton[9][0]));
+        document.getElementById("soundValueNote").innerText = diaton[9][1];
+        console.log(diaton[9][0]);
         hit = true;
-    }else if (mouseX < keyOffsetX + keySpace * 11 + keyWidth * 11 && mouseX > keyOffsetX + keySpace * 10 + keyWidth * 10 && mouseY < height/2 + keyHeight && mouseY > height/2){
-        osci.freq(midiToFreq(note[10]));
+    }//Anfang und Ende
+    else if ((mouseX < keyOffsetX + keySpace * 11 + keyWidth * 11 && mouseX > keyOffsetX + keySpace * 10 + keyWidth * 10 && mouseY < height/2 + keyHeight && mouseY > height/2) &&
+        !(mouseX < keyOffsetX + keyWidth * 10 + keySpace * 10 + keyWidth2 / 2 && mouseX > keyOffsetX + keyWidth * 10 + keySpace * 10 - keyWidth2 / 2 && mouseY < height/2 + keyHeight2 && mouseY > height/2) &&
+        !(mouseX < keyOffsetX + keyWidth * 11 + keySpace * 10 && mouseX > keyOffsetX + keyWidth * 11 + keySpace * 10 - keyWidth2 / 2 && mouseY < height/2 + keyHeight2 && mouseY > height/2)){
+        osci.freq(midiToFreq(diaton[10][0]));
+        document.getElementById("soundValueNote").innerText = diaton[10][1];
+        console.log(diaton[10][0]);
         hit = true;
-    }else if (mouseX < keyOffsetX + keySpace * 12 + keyWidth * 12 && mouseX > keyOffsetX + keySpace * 11 + keyWidth * 11 && mouseY < height/2 + keyHeight && mouseY > height/2){
-        osci.freq(midiToFreq(note[11]));
+    }//Anfang und Ende
+    else if ((mouseX < keyOffsetX + keySpace * 12 + keyWidth * 12 && mouseX > keyOffsetX + keySpace * 11 + keyWidth * 11 && mouseY < height/2 + keyHeight && mouseY > height/2) &&
+        !(mouseX < keyOffsetX + keyWidth * 11 + keySpace * 11 + keyWidth2 / 2 && mouseX > keyOffsetX + keyWidth * 11 + keySpace * 11 - keyWidth2 / 2 && mouseY < height/2 + keyHeight2 && mouseY > height/2) &&
+        !(mouseX < keyOffsetX + keyWidth * 12 + keySpace * 11 && mouseX > keyOffsetX + keyWidth * 12 + keySpace * 11 - keyWidth2 / 2 && mouseY < height/2 + keyHeight2 && mouseY > height/2)){
+        osci.freq(midiToFreq(diaton[11][0]));
+        document.getElementById("soundValueNote").innerText = diaton[11][1];
+        console.log(diaton[11][0]);
         hit = true;
-    }else if (mouseX < keyOffsetX + keySpace * 13 + keyWidth * 13 && mouseX > keyOffsetX + keySpace * 12 + keyWidth * 12 && mouseY < height/2 + keyHeight && mouseY > height/2){
-        osci.freq(midiToFreq(note[12]));
+    }//Anfang
+    else if ((mouseX < keyOffsetX + keySpace * 13 + keyWidth * 13 && mouseX > keyOffsetX + keySpace * 12 + keyWidth * 12 && mouseY < height/2 + keyHeight && mouseY > height/2) && 
+        !(mouseX < keyOffsetX + keyWidth * 12 + keySpace * 12 + keyWidth2 / 2 && mouseX > keyOffsetX + keyWidth * 12 + keySpace * 12 && mouseY < height/2 + keyHeight2 && mouseY > height/2)){
+        osci.freq(midiToFreq(diaton[12][0]));
+        document.getElementById("soundValueNote").innerText = diaton[12][1];
+        console.log(diaton[12][0]);
         hit = true;
-    }else if (mouseX < keyOffsetX + keySpace * 14 + keyWidth * 14 && mouseX > keyOffsetX + keySpace * 13 + keyWidth * 13 && mouseY < height/2 + keyHeight && mouseY > height/2){
-        osci.freq(midiToFreq(note[13]));
+    }//Ende
+    else if ((mouseX < keyOffsetX + keySpace * 14 + keyWidth * 14 && mouseX > keyOffsetX + keySpace * 13 + keyWidth * 13 && mouseY < height/2 + keyHeight && mouseY > height/2) &&
+        !(mouseX < keyOffsetX + keyWidth * 14 + keySpace * 13 && mouseX > keyOffsetX + keyWidth * 14 + keySpace * 13 - keyWidth2 / 2 && mouseY < height/2 + keyHeight2 && mouseY > height/2)){
+        osci.freq(midiToFreq(diaton[13][0]));
+        document.getElementById("soundValueNote").innerText = diaton[13][1];
+        console.log(diaton[13][0]);
         hit = true;
-    }else if (mouseX < keyOffsetX + keySpace * 15 + keyWidth * 15 && mouseX > keyOffsetX + keySpace * 14 + keyWidth * 14 && mouseY < height/2 + keyHeight && mouseY > height/2){
-        osci.freq(midiToFreq(note[14]));
-        console.log(note[14]);
+    }//Anfang und Ende
+    else if ((mouseX < keyOffsetX + keySpace * 15 + keyWidth * 15 && mouseX > keyOffsetX + keySpace * 14 + keyWidth * 14 && mouseY < height/2 + keyHeight && mouseY > height/2) &&
+        !(mouseX < keyOffsetX + keyWidth * 14 + keySpace * 14 + keyWidth2 / 2 && mouseX > keyOffsetX + keyWidth * 14 + keySpace * 14 - keyWidth2 / 2 && mouseY < height/2 + keyHeight2 && mouseY > height/2) &&
+        !(mouseX < keyOffsetX + keyWidth * 15 + keySpace * 14 && mouseX > keyOffsetX + keyWidth * 15 + keySpace * 14 - keyWidth2 / 2 && mouseY < height/2 + keyHeight2 && mouseY > height/2)){
+        osci.freq(midiToFreq(diaton[14][0]));
+        document.getElementById("soundValueNote").innerText = diaton[14][1];
+        console.log(diaton[14][0]);
         hit = true;
-    }else if (mouseX < keyOffsetX + keySpace * 16 + keyWidth * 16 && mouseX > keyOffsetX + keySpace * 15 + keyWidth * 15 && mouseY < height/2 + keyHeight && mouseY > height/2){
-        osci.freq(midiToFreq(note[15]));
-        console.log(note[15]);
+    }//Anfang
+    else if ((mouseX < keyOffsetX + keySpace * 16 + keyWidth * 16 && mouseX > keyOffsetX + keySpace * 15 + keyWidth * 15 && mouseY < height/2 + keyHeight && mouseY > height/2) &&
+        !(mouseX < keyOffsetX + keyWidth * 15 + keySpace * 15 + keyWidth2 / 2 && mouseX > keyOffsetX + keyWidth * 15 + keySpace * 15 && mouseY < height/2 + keyHeight2 && mouseY > height/2)){
+        osci.freq(midiToFreq(diaton[15][0]));
+        document.getElementById("soundValueNote").innerText = diaton[15][1];
+        console.log(diaton[15][0]);
         hit = true;
-    }else if (mouseX < keyOffsetX + keySpace * 17 + keyWidth * 17 && mouseX > keyOffsetX + keySpace * 16 + keyWidth * 16 && mouseY < height/2 + keyHeight && mouseY > height/2){
-        osci.freq(midiToFreq(note[16]));
-        console.log(note[16]);
+    }else if ((mouseX < keyOffsetX + keySpace * 17 + keyWidth * 17 && mouseX > keyOffsetX + keySpace * 16 + keyWidth * 16 && mouseY < height/2 + keyHeight && mouseY > height/2)){
+        osci.freq(midiToFreq(diaton[16][0]));
+        document.getElementById("soundValueNote").innerText = diaton[16][1];
+        console.log(diaton[16][0]);
         hit = true;
     }
 
-    osci.fade(0.5,0.2);
-    osci.amp(3);
-    if(playing == false && hit == true){
-        osci.start();
+    else if (mouseX < keyOffsetX + (keyWidth + keySpace / 2) + keyWidth2 / 2 && mouseX > keyOffsetX + (keyWidth + keySpace / 2) - keyWidth2 / 2 && mouseY < height/2 + keyHeight2 && mouseY > height/2){
+        osci.freq(midiToFreq(pentaton[0][0]));
+        document.getElementById("soundValueNote").innerText = pentaton[0][1];
+        console.log(pentaton[0][0]);
+        hit = true;
+    }else if (mouseX < keyOffsetX + (keyWidth * 3 + keySpace * 2 + keySpace / 2) + keyWidth2 / 2 && mouseX > keyOffsetX + (keyWidth * 3 + keySpace * 2 + keySpace / 2) - keyWidth2 / 2 && mouseY < height/2 + keyHeight2 && mouseY > height/2){
+        osci.freq(midiToFreq(pentaton[1][0]));
+        document.getElementById("soundValueNote").innerText = pentaton[1][1];
+        console.log(pentaton[1][0]);
+        hit = true;
+    }else if (mouseX < keyOffsetX + (keyWidth * 4 + keySpace * 3 + keySpace / 2) + keyWidth2 / 2 && mouseX > keyOffsetX + (keyWidth * 4 + keySpace * 3 + keySpace / 2) - keyWidth2 / 2 && mouseY < height/2 + keyHeight2 && mouseY > height/2){
+        osci.freq(midiToFreq(pentaton[2][0]));
+        document.getElementById("soundValueNote").innerText = pentaton[2][1];
+        console.log(pentaton[2][0]);
+        hit = true;
+    }else if (mouseX < keyOffsetX + (keyWidth * 5 + keySpace * 4 + keySpace / 2) + keyWidth2 / 2 && mouseX > keyOffsetX + (keyWidth * 5 + keySpace * 4 + keySpace / 2) - keyWidth2 / 2 && mouseY < height/2 + keyHeight2 && mouseY > height/2){
+        osci.freq(midiToFreq(pentaton[3][0]));
+        document.getElementById("soundValueNote").innerText = pentaton[3][1];
+        console.log(pentaton[3][0]);
+        hit = true;
+    }else if (mouseX < keyOffsetX + (keyWidth * 7 + keySpace * 6 + keySpace / 2) + keyWidth2 / 2 && mouseX > keyOffsetX + (keyWidth * 7 + keySpace * 6 + keySpace / 2) - keyWidth2 / 2 && mouseY < height/2 + keyHeight2 && mouseY > height/2){
+        osci.freq(midiToFreq(pentaton[4][0]));
+        document.getElementById("soundValueNote").innerText = pentaton[4][1];
+        console.log(pentaton[4][0]);
+        hit = true;
+    }else if (mouseX < keyOffsetX + (keyWidth * 8 + keySpace * 7 + keySpace / 2) + keyWidth2 / 2 && mouseX > keyOffsetX + (keyWidth * 8 + keySpace * 7 + keySpace / 2) - keyWidth2 / 2 && mouseY < height/2 + keyHeight2 && mouseY > height/2){
+        osci.freq(midiToFreq(pentaton[5][0]));
+        document.getElementById("soundValueNote").innerText = pentaton[5][1];
+        console.log(pentaton[5][0]);
+        hit = true;
+    }else if (mouseX < keyOffsetX + (keyWidth * 10 + keySpace * 9 + keySpace / 2) + keyWidth2 / 2 && mouseX > keyOffsetX + (keyWidth * 10 + keySpace * 9 + keySpace / 2) - keyWidth2 / 2 && mouseY < height/2 + keyHeight2 && mouseY > height/2){
+        osci.freq(midiToFreq(pentaton[6][0]));
+        document.getElementById("soundValueNote").innerText = pentaton[6][1];
+        console.log(pentaton[6][0]);
+        hit = true;
+    }else if (mouseX < keyOffsetX + (keyWidth * 11 + keySpace * 10 + keySpace / 2) + keyWidth2 / 2 && mouseX > keyOffsetX + (keyWidth * 11 + keySpace * 10 + keySpace / 2) - keyWidth2 / 2 && mouseY < height/2 + keyHeight2 && mouseY > height/2){
+        osci.freq(midiToFreq(pentaton[7][0]));
+        document.getElementById("soundValueNote").innerText = pentaton[7][1];
+        console.log(pentaton[7][0]);
+        hit = true;
+    }else if (mouseX < keyOffsetX + (keyWidth * 12 + keySpace * 11 + keySpace / 2) + keyWidth2 / 2 && mouseX > keyOffsetX + (keyWidth * 12 + keySpace * 11 + keySpace / 2) - keyWidth2 / 2 && mouseY < height/2 + keyHeight2 && mouseY > height/2){
+        osci.freq(midiToFreq(pentaton[8][0]));
+        document.getElementById("soundValueNote").innerText = pentaton[8][1];
+        console.log(pentaton[8][0]);
+        hit = true;
+    }else if (mouseX < keyOffsetX + (keyWidth * 14 + keySpace * 13 + keySpace / 2) + keyWidth2 / 2 && mouseX > keyOffsetX + (keyWidth * 14 + keySpace * 13 + keySpace / 2) - keyWidth2 / 2 && mouseY < height/2 + keyHeight2 && mouseY > height/2){
+        osci.freq(midiToFreq(pentaton[9][0]));
+        document.getElementById("soundValueNote").innerText = pentaton[9][1];
+        console.log(pentaton[9][0]);
+        hit = true;
+    }else if (mouseX < keyOffsetX + (keyWidth * 15 + keySpace * 14 + keySpace / 2) + keyWidth2 / 2 && mouseX > keyOffsetX + (keyWidth * 15 + keySpace * 14 + keySpace / 2) - keyWidth2 / 2 && mouseY < height/2 + keyHeight2 && mouseY > height/2){
+        osci.freq(midiToFreq(pentaton[10][0]));
+        document.getElementById("soundValueNote").innerText = pentaton[10][1];
+        console.log(pentaton[10][0]);
+        hit = true;
+    }
+    else{
+        hit = false;
+    }
+
+    
+    if(hit == true){ 
         playing = true;
+        console.log(hit); 
+        osci.fade(0.5,0.2);
+        osci.amp(3);
+        osci.start();
+    }else{
         console.log(hit);
     }
 }

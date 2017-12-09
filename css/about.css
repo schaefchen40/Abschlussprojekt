@@ -48,7 +48,7 @@ span{
     8%  {background: rgb(62, 80, 87);}
     20%  {background: rgb(116, 158, 155);}
     30%  {background: rgb(247, 214, 26);}
-    40%  {background: rgb(247, 199, 44);}
+    40%  {background: rgb(247, 193, 44);}
     50% {background: rgb(245, 103, 9);}
     60% {background: rgb(207, 80, 0);}
     70% {background: rgb(141, 54, 1);}
@@ -57,16 +57,17 @@ span{
     90% {background: rgb(0, 0, 0);}
 
     0%   {color: rgb(184, 184, 184);}
-    15%  {color: rgb(240, 240, 240);}
-    20%  {color: rgb(50, 50, 50);}
-    35%  {color: rgb(70, 70, 70);}
-    40%  {color: rgb(85, 85, 85);}
-    50%  {color: rgb(50, 50, 50);}
+    20%  {color: rgb(255, 255, 255);}
+    23%  {color: rgb(255, 255, 255);}
+    26%  {color: rgb(100, 100, 100);}
+    30%  {color: rgb(40, 40, 40);}
+    40%  {color: rgb(30, 30, 30);}
     60%  {color: rgb(55, 55, 55);}
-    70%  {color: rgb(120, 120, 120);}
-    80%  {color: rgb(180, 180, 180);}
-    90%  {color: rgb(210, 210, 210);}
-    0%   {color: rgb(184, 184, 184);}
+    70%  {color: rgb(160, 160, 160);}
+    75%  {color: rgb(200, 200, 200);}
+    80%  {color: rgb(210, 210, 210);}
+    90%  {color: rgb(220, 210, 220);}
+    100% {color: rgb(184, 184, 184);}
 }
 
 /* Safari and Chrome - necessary duplicate */
@@ -75,7 +76,7 @@ span{
     8%  {background: rgb(62, 80, 87);}
     20%  {background: rgb(116, 158, 155);}
     30%  {background: rgb(247, 214, 26);}
-    40%  {background: rgb(247, 199, 44);}
+    40%  {background: rgb(247, 193, 44);}
     50% {background: rgb(245, 103, 9);}
     60% {background: rgb(207, 80, 0);}
     70% {background: rgb(141, 54, 1);}
@@ -84,14 +85,15 @@ span{
     90% {background: rgb(0, 0, 0);}
 
     0%   {color: rgb(184, 184, 184);}
-    15%  {color: rgb(240, 240, 240);}
-    20%  {color: rgb(50, 50, 50);}
-    35%  {color: rgb(70, 70, 70);}
-    40%  {color: rgb(85, 85, 85);}
-    50%  {color: rgb(50, 50, 50);}
+    20%  {color: rgb(255, 255, 255);}
+    23%  {color: rgb(255, 255, 255);}
+    26%  {color: rgb(100, 100, 100);}
+    30%  {color: rgb(40, 40, 40);}
+    40%  {color: rgb(30, 30, 30);}
     60%  {color: rgb(55, 55, 55);}
-    70%  {color: rgb(120, 120, 120);}
-    80%  {color: rgb(180, 180, 180);}
-    90%  {color: rgb(210, 210, 210);}
-    0%   {color: rgb(184, 184, 184);}
+    70%  {color: rgb(160, 160, 160);}
+    75%  {color: rgb(200, 200, 200);}
+    80%  {color: rgb(210, 210, 210);}
+    90%  {color: rgb(220, 210, 220);}
+    100% {color: rgb(184, 184, 184);}
 }
