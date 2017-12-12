@@ -58,9 +58,9 @@ function draw(){
         }
 
         //translate(width/2,height/2);
-        var c = color(255, 204, 0);  // Define color 'c'
+        var c = color(184, 184, 184);  // Define color 'c'
         fill(c);
-        ellipse(mouseX, mouseY, 15, 15);
+        ellipse(mouseX, mouseY, 10, 10);
         
         var waveform = fft.waveform();
         noFill();

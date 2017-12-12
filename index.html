@@ -30,16 +30,12 @@
                             <input class="selector" id="selectorSuprise" type="radio" name="file" value="1" checked>
                             <label for="selectorSuprise">Suprise me</label>
                             <input class="selector" id="selectorFile" type="radio" name="file" value="2" >
-                            <label for="selectorFile">Choose own file</label> 
-                        
-                            
-                        
+                            <label for="selectorFile">Choose own file</label>     
                     </form>
-                    <form id="fileUpload" action="fileupload.php" method="POST" enctype="multipart/form-data" value="<?php echo $_SESSION['$target_file'];?>">
+                    <form id="fileUpload" action="fileupload.php" method="POST" enctype="multipart/form-data" >
                         <input id="fileButton" name="fileToUpload" style="display: none;" type="file" accept="audio/*">
                         <!--<input id="fileButtonSubmit" style="display: none;" type="submit" value="Upload Song" name="submit">-->
-                        <input id="startButtonAnalyze" name="fileToUpload" type="submit" value="Start"/>
-                        
+                        <input class="btn" id="startButtonAnalyze" name="fileToUpload" type="submit" value="Start"/>   
                     </form>
                     </div>
                     
@@ -54,7 +50,7 @@
                             <input class="selector" id="visual3" type="radio" name="visual" value="3">
                             <label for="visual3">Nothing yet</label>
                             <br>
-                            <input id="startButtonPlay" type="submit" value="Start"/>
+                            <input class="btn" id="startButtonPlay" type="submit" value="Start"/>
                         </form>
                     </div>
                     <!--<button id="startButtonPlay">Start</button>-->
