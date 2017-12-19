@@ -152,6 +152,12 @@ function draw() {
     document.getElementById("soundValueCurrentTime").innerText=time; 
     var frames = sound.frames();
     document.getElementById("soundValueFrames").innerText=frames; 
+    if(sound.channels() == 1){
+        document.getElementById("soundValueChannel").innerText="Mono";
+    }else if(sound.channels() == 2){
+        document.getElementById("soundValueChannel").innerText="Stereo";
+    }
+    
    // amp.toggleNormalize(true);
    var spectrum = fft.analyze();  
    var spectralCentroid = fft.getCentroid();   

@@ -9,3 +9,16 @@ body {
 }
 
 
+.link:link, :visited {
+    color: rgb(132,132,132);
+}
+
+.link:hover {
+    color: hotpink;
+}
+
+.link:active {
+    color: rgb(255, 123, 0);
+}
+
+
