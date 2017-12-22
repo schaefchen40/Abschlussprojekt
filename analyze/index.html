@@ -15,8 +15,8 @@
         <div id="menu">
             <div id="menuRight">
                 <div id="buttonHome">    
-                    <i class="material-icons" title="Home" style="color: #b6b6b6">&#xE88A</i>
-                </div>    
+                    <i class="material-Menuicons" class="material-icons_Menu" title="Home">&#xE88A</i>
+                </div> 
             </div>
             <div id="menuLeft">
                 <div id="ctrlRadio">
@@ -45,10 +45,10 @@
                 </div> 
             </div>  
             <div class="ctrl">
-                <a class="ctrlButton" id="playButton" onclick="backward()"><i class="material-icons"  title="Backward" id="jumpIcon" style="color: #b6b6b6">&#xE020</i></a>
-                <a class="ctrlButton" id="playButton" onclick="play()"><i class="material-icons"  title="Pause" id="playIcon" style="color: #b6b6b6">&#xE036</i></a>
-                <!--<a class="ctrlButton" id="stopButton" onclick="stop()"><i class="material-icons" title="Stop" id="stopIcon" style="color: #b6b6b6">&#xE047</i></a>-->
-                <a class="ctrlButton" id="playButton" onclick="forward()"><i class="material-icons"  title="Forward" id="jumpIcon" style="color: #b6b6b6">&#xE01F</i></a>
+                <a class="ctrlButton" onclick="backward()"><i class="material-Menuicons" class="material-icons_Menu"  title="Backward" id="jumpIcon">&#xE020</i></a>
+                <a class="ctrlButton" onclick="play()"><i class="material-Menuicons" class="material-icons_Menu"  title="Pause" id="playIcon">&#xE036</i></a>
+                <!--<a class="ctrlButton" id="stopButton" onclick="stop()"><i class="material-Menuicons" class="material-icons_Menu" title="Stop" id="stopIcon">&#xE047</i></a>-->
+                <a class="ctrlButton" onclick="forward()"><i class="material-Menuicons" class="material-icons_Menu"  title="Forward" id="jumpIcon">&#xE01F</i></a>
             </div>
               
            
@@ -64,15 +64,11 @@
                 </div>
             </div>
 
-    
-
         <script type="text/javascript" src="js/sound.js"></script>
         <script type="text/javascript">
             document.getElementById("buttonHome").onclick = function(){
                 location.href="./index.html";
             }
         </script>
-
-    </body>
-    
+    </body>    
 </html>

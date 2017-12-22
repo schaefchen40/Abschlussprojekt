@@ -6,6 +6,14 @@ var playing = false;
 var selection;
 var hit = false;
 
+var attackLevel = 1.5;          //ampl. level after attackTime is finished
+var releaseLevel = 0;           //ampl. level after releaseTime is finished
+var attackTime = 0.001;         //fade in time
+var decayTime = 0.2;            //fade out time
+var susPercent = 0.2;           //rate of fade in and fade out
+var releaseTime = 0.001;
+var env;
+
 var keyOffsetX = 200;
 var keyWidth = 45;
 var keyWidth2 = 35;
@@ -38,12 +46,12 @@ function setup(){
         osci.setType("triangle",0);
         document.getElementById("ctrlRadio").style.display = "none";
         document.getElementById("soundInfo").style.display = "none";
-    }
-    else if(selection == "nothing"){
-        osci.setType("sine",0);
-        document.getElementById("ctrlRadio").style.display = "none";
-    }
+        env = new p5.Env();
+        env.setADSR(attackTime, decayTime, susPercent, releaseTime);
+        env.setRange(attackLevel, releaseLevel);
+        playing = true;
 
+    }
 }
 function draw(){
     background(0);
@@ -313,11 +321,11 @@ function mousePressed() {
     }
 
     
-    if(hit == true){ 
+    if(hit == true && playing == true){ 
         playing = true;
         console.log(hit); 
         osci.fade(0.5,0.2);
-        osci.amp(3);
+        osci.amp(env);
         osci.start();
     }else{
         console.log(hit);

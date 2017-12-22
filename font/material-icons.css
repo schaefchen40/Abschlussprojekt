@@ -8,6 +8,16 @@
        url(MaterialIcons-Regular.woff2) format('woff2'),
        url(MaterialIcons-Regular.woff) format('woff'),
        url(MaterialIcons-Regular.ttf) format('truetype');
+  animation: colorchange 224s; /* animation-name followed by duration in seconds*/
+  /* you could also use milliseconds (ms) or something like 2.5s */
+  -webkit-animation: colorchange 224s; /* Chrome and Safari */
+}
+.material-icons:hover{
+  color: hotpink;
+}
+
+.material-icons:active{
+  color: rgb(255, 123, 0);
 }
 
 .material-icons {
@@ -35,3 +45,37 @@
   /* Support for IE. */
   font-feature-settings: 'liga';
 }
+
+.material-Menuicons:hover{
+  color: hotpink;
+}
+
+.material-Menuicons:active{
+  color: rgb(255, 123, 0);
+}
+.material-Menuicons {
+  font-family: 'Material Icons';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 30px;  /* Preferred icon size */
+  display: inline-block;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
+  color: rgb(182, 182, 182);
+
+  /* Support for all WebKit browsers. */
+  -webkit-font-smoothing: antialiased;
+  /* Support for Safari and Chrome. */
+  text-rendering: optimizeLegibility;
+
+  /* Support for Firefox. */
+  -moz-osx-font-smoothing: grayscale;
+
+  /* Support for IE. */
+  font-feature-settings: 'liga';
+}
+icons_Menu
