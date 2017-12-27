@@ -1,89 +1,71 @@
-var sound;
-var file;
+var sound, file;
 var canvas;
 var frameCtx;
 var fft;
 var ampli;
-var media;
+//var media;
 var w;
 var spectMax;
 var visual;
 var rateSlider, volumeSlider;
-var speed;
 var time;
-var x;
+//var x;
+
+//set predefined songs. they will be chosen randomly
 var array = ["./media/wolke.mp3","./media/503.mp3","./media/ziemlichbestefreunde.mp3","./media/goldenyears.mp3"];
 var textCount;
 
-
-
-function preload(){
+function preload(){                                                             //use preload to make sure file is ready on start
     var name = "filename=";
-    var decodedCookie = decodeURIComponent(document.cookie);
+    var decodedCookie = decodeURIComponent(document.cookie);                    //get the cookie
     var ca = decodedCookie.split(";");
     var cookieValue;
-    for(var i = 0; i <ca.length; i++) {
+    for(var i = 0; i <ca.length; i++) {                                         //for each segment (split at ;) get the substring
         var c = ca[i];
         while (c.charAt(0) == " ") {
             c = c.substring(1);
         }
         if (c.indexOf(name) == 0) {
-            cookieValue = c.substring(name.length, c.length);
+            cookieValue = c.substring(name.length, c.length);                   //start at the end of "filename=" until the end of the current substring == filename stored in the cookie
         }
     }
-    file = "./uploads/" + cookieValue;
+    file = "./uploads/" + cookieValue;                                          //get the uploaded (with php) file
     
-    //file = getCookie("filename");
-    console.log("File: " + file);
     if (cookieValue !== undefined){
         console.log("CookieFile: " + file);
     }else{
         file = array[Math.floor(Math.random() * array.length)]; 
         console.log("File: " + file);
     }
-    // setControlElements();
-    
-   console.log(file);
-   sound = loadSound(file); 
+    sound = loadSound(file); 
 }
-
-// function loadSounds(id){
-//     console.log(document.getElementById(id).innerText);
-//     file = document.getElementById(id).innerHTML; 
-//     sound = loadSound(file, soundReady); 
-// }
 
 function setup() {
     sound.stop();
     textCount = 20;
     createCanvas(window.innerWidth,window.innerHeight);
-    volumeSlider = createSlider(0,3,1,0.2);
-    rateSlider = createSlider(0,2,1,0.1);
-    //energySlider = createSlider(0,20000,1000,100);
-    //rateSlider.position(30,30);
-    volumeSlider.parent("sliderVolumeCtrl");
+    volumeSlider = createSlider(0,3,1,0.2);                                     //create the slider to manipulate playback volume, min 0, max 3, set to 1, steps 0.2
+    rateSlider = createSlider(0,2,1,0.1);                                       //create the slider to manipulate playback speed, min 0, max 2, set to 1, steps 0.1
+    volumeSlider.parent("sliderVolumeCtrl");                                    //create slider in the predifined dom parent element
     rateSlider.parent("sliderRateCtrl");
-    //energySlider.parent("sliderEnergyCtrl");
-    speed = constrain(rateSlider, 0.0, 1);
     document.getElementById("sliderValueVolume").innerText=rateSlider.value(); 
     document.getElementById("sliderValueRate").innerText=rateSlider.value(); 
-    //document.getElementById("sliderValueEnergy").innerText=energySlider.value() + " Hz";
     spectMax = 512;
     //spectMax = 256;
     
     visual=1;
-    if(window.innerWidth < 1024 && visual == 1){
-        spectMax = 512;
-    }else if(window.innerWidth < 1024 && visual == 2){
+    if(window.innerWidth < 1024 && visual == 1){  
+        spectMax = 512;         
+    }else if(window.innerWidth < 1024 && visual == 2){                          //simplify the spectrum if window size is small
         spectMax = 128;
     }
-    fft = new p5.FFT(0.,spectMax);
+    fft = new p5.FFT(0.,spectMax);                                              //set fast fourier tranformation
     w = (width)/(spectMax);
     amp = new p5.Amplitude();
     //colorMode(HSL);
     if(sound.isLoaded()){
         sound.setVolume(1);
-        time = milliToMini(sound.duration());
+        time = milliToMini(sound.duration());                                   //call function  to convert miliseconds to minutes, seconds and miliseconds
         document.getElementById("soundValueDuration").innerText=time;      
         sound.play();
     }
@@ -105,15 +87,7 @@ function play(){
         //document.getElementById("playIcon").title="Pause";    
     }
 }
-// function stop(){
-//     if(sound.isPlaying()){
-//         sound.stop();
-//         sound.disconnect();
-//         noLoop();
-//         icon = "&#xE037";
-//         document.getElementById("playIcon").innerHTML = icon;        
-//     }
-// }
+
 function forward(){
     if(sound.isPlaying()){
         var jumpSize = sound.duration()/10;
@@ -132,7 +106,7 @@ function backward(){
         }  
     }
 }
-function milliToMini(milli){
+function milliToMini(milli){                                        //convert miliseconds to minutes, seconds and miliseconds using moment.js
     minutes = Math.floor(milli / 60);
     seconds= milli - minutes * 60;     
     return minutes + ":" + seconds.toFixed(4);

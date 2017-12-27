@@ -33,7 +33,6 @@
                     </form>
                     <form id="fileUpload" action="fileupload.php" method="POST" enctype="multipart/form-data" >
                         <input id="fileButton" name="fileToUpload" style="display: none;" type="file" accept="audio/*">
-                        <!--<input id="fileButtonSubmit" style="display: none;" type="submit" value="Upload Song" name="submit">-->
                         <input class="btn" id="startButtonAnalyze" name="fileToUpload" type="submit" value="Start"/>   
                     </form>
                     </div>
@@ -50,8 +49,6 @@
                             <input class="btn" id="startButtonPlay" type="submit" value="Start"/>
                         </form>
                     </div>
-                    <!--<button id="startButtonPlay">Start</button>-->
-                    
                 </div>
             </div>
         </div>
@@ -74,11 +71,9 @@
                     document.getElementById("welcomeSelectionPlay").style.display = "none";
                   
                     if(document.querySelector('input[name="file"]:checked').value == 2){
-                        document.getElementById("fileButton").style.display = "block";  
-                        //document.getElementById("fileButtonSubmit").style.display = "block";    
+                        document.getElementById("fileButton").style.display = "block";     
                     }else if(document.querySelector('input[name="file"]:checked').value == 1){
                         document.getElementById("fileButton").style.display = "none";    
-                        //document.getElementById("fileButtonSubmit").style.display = "none";    
                     }           
                     document.getElementById("welcomeSelectionAnalyze").style.display = "block";
                 }else if(document.getElementById("welcomeSelectionPlay").style.display == "none" && document.getElementById("welcomeSelectionAnalyze").style.display == "none"){
@@ -89,23 +84,19 @@
             document.getElementById("selectorFile").onclick = function () { 
                 if(document.querySelector('input[name="file"]:checked').value == 2){
                     document.getElementById("fileButton").style.display = "block";   
-                    //document.getElementById("fileButtonSubmit").style.display = "block";   
                 }
             }
             document.getElementById("selectorSuprise").onclick = function () { 
                 if(document.querySelector('input[name="file"]:checked').value == 1){
                     document.getElementById("fileButton").style.display = "none";
-                    //document.getElementById("fileButtonSubmit").style.display = "none";  
                 }
-            }
-            
+            }         
         </script>
         <script type="text/javascript">
             document.getElementById("btnPlay").onclick = function () {
                 if(document.getElementById('welcomeSelectionAnalyze').style.display == "block"){
                     if(document.getElementById("fileButton").style.display == "block"){
                         document.getElementById("fileButton").style.display = "none";   
-                        //document.getElementById("fileButtonSubmit").style.display = "none";    
                     }
                     document.getElementById("welcomeSelectionAnalyze").style.display = "none";
                     document.getElementById("welcomeSelectionPlay").style.display = "block";
@@ -117,6 +108,5 @@
     <script>
         document.cookie = "filename=; expires=Thu, 01 Jan 1970 00:00:00 UTC";
     </script>
-    </body>
-    
+    </body>    
 </html>
