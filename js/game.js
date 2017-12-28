@@ -44,8 +44,7 @@ function setup(){
     }
     else if(selection == "Piano"){
         osci.setType("triangle",0);
-        document.getElementById("ctrlRadio").style.display = "none";
-        document.getElementById("soundInfo").style.display = "none";
+        
         env = new p5.Env();
         env.setADSR(attackTime, decayTime, susPercent, releaseTime);
         env.setRange(attackLevel, releaseLevel);

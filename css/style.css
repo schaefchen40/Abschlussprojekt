@@ -81,7 +81,7 @@ span.soundText{
     font-family: "Courier new", Times, serif;
 }
 
-div#soundInfo{
+div#soundInfoOszi, #soundInfoPiano{
     position: absolute;
     height: 150px;
     width: 220px;
@@ -93,6 +93,13 @@ div#soundInfo{
 
 .sliderLabel{
     display: inline-block;
+}
+
+.blob:hover{
+    fill: hotpink;
+}
+.blob:active {
+    fill: rgb(255, 123, 0);
 }
 
 

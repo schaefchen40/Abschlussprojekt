@@ -39,17 +39,17 @@
             <div class="ctrl">
                     <a class="ctrlButton" id="stopButton" onclick="play()"><i class="material-Menuicons" class="material-icons" id="playIcon" title="Pause">&#xE036</i></a>
             </div>
-            <div id="soundInfo">
+            <div id="soundInfoOszi">
                 <span class="soundText">Frequency: <p class="soundValue" id="soundValueFrequency"></p></span>
                 <span class="soundText">Frequency Amplitude: <p class="soundValue" id="soundValueAmplitude"></p></span>                
             </div>
         </div>
         
-        <div id="soundInfo">
+        <div id="soundInfoPiano">
             <span class="soundText"><p class="soundValue" id="soundValueNote" style="font-size: 30px;"></p></span>     
         </div>
             
-        <script LANGUAGE="JavaScript">
+        <script type="text/javascript">
             function getParams(){
                 var idx = document.URL.indexOf('?');
                 var params = new Array();
@@ -63,17 +63,30 @@
                 return params;
             }
             params = getParams();
-            visual = unescape(params["visual"]);
+            var visual = unescape(params["visual"]);
+            var srcScript;
             if(visual == 1){
                 document.getElementById("selectedVisual").innerText = "Oscillator";
+                document.getElementById("soundInfoPiano").style.display = "none";
+                srcScript = "js/game.js";                
             }else if(visual == 2){
                 document.getElementById("selectedVisual").innerText = "Piano";
+                document.getElementById("ctrlRadio").style.display = "none";
+                document.getElementById("soundInfoOszi").style.display = "none";
+                srcScript = "js/game.js";
             }else if(visual == 3){
-                document.getElementById("selectedVisual").innerText = "nothing";
+                document.getElementById("selectedVisual").innerText = "Bubble";
+                document.getElementById("ctrlRadio").style.display = "none";
+                document.getElementById("stopButton").style.display = "none";
+                document.getElementById("soundInfoOszi").style.display = "none";
+                document.getElementById("soundInfoPiano").style.display = "none";
+                srcScript = "js/bubbles.js";
             }
+            scriptElement = document.createElement("script");
+            scriptElement.type = "text/javascript";
+            scriptElement.src = srcScript;
+            document.getElementsByTagName("body")[0].appendChild(scriptElement);
         </script>
-
-        <script type="text/javascript" src="js/game.js"></script>
 
         <script type="text/javascript">
             document.getElementById("buttonHome").onclick = function(){

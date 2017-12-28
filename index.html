@@ -45,6 +45,8 @@
                             <label for="visual1">Suprise me</label>
                             <input class="selector" id="visual2" type="radio" name="visual" value="2">
                             <label for="visual2">Piano</label>
+                            <input class="selector" id="visual3" type="radio" name="visual" value="3">
+                            <label for="visual2">Bubble</label>
                             <br>
                             <input class="btn" id="startButtonPlay" type="submit" value="Start"/>
                         </form>
@@ -62,7 +64,11 @@
                 location.href = "analyze/index.html";
             };
             document.getElementById("startButtonPlay").onclick = function () {
-                location.href = "play/index.html";
+                if(visual = document.querySelector('input[name="visuType"]:checked').value == 3){
+                    location.href = "play/index.html";
+                }else{
+                    location.href = "play/index.html";
+                }
             };
         </script>
         <script type="text/javascript">
