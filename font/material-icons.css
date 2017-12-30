@@ -14,6 +14,7 @@
 }
 .material-icons:hover{
   color: hotpink;
+  cursor: pointer;
 }
 
 .material-icons:active{
@@ -48,6 +49,7 @@
 
 .material-Menuicons:hover{
   color: hotpink;
+  cursor: pointer;
 }
 
 .material-Menuicons:active{
@@ -78,4 +80,3 @@
   /* Support for IE. */
   font-feature-settings: 'liga';
 }
-icons_Menu

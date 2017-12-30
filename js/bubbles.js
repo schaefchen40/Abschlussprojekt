@@ -5,7 +5,7 @@
 	svg.setAttributeNS(null, "width", window.innerWidth);
 	svg.setAttributeNS(null, "height", window.innerHeight);
 	
-	var border = 5;
+	var border = 30;
 	var header = 100;
 	var blobMaxX = 8;
 	var blobSpace = (window.innerWidth - 2 * border) / blobMaxX * 0.25 ;		
@@ -13,7 +13,8 @@
 	var blobMaxY = 1;
 	
 	var path ="media/";
-	var file = ["birds.mp3", "bell.mp3", "chord.wav", "startrek.mp3", "pterodactyl.wav", "roadrunner.wav", "whistle.wav"];
+	var file = ["azghost.mp3", "bell.mp3", "basic_rock.mp3", "birds.mp3", "chord.wav", "courseclearfanfare.mp3","forest.mp3","key_chimes.mp3","koopacastle_emerges.mp3",
+	"lidcreak.mp3", "pterodactyl.wav", "r2d2.mp3", "roadrunner.wav", "som_victory.mp3", "startrek.mp3", "tos_chirp_1.mp3", "tos_viewscreen_slow.mp3",  "whistle.wav"];
 	var temp = 2 * blobRad + blobSpace;
 	while((window.innerHeight - 2 * border - header) > blobMaxY * temp){
 		blobMaxY++;

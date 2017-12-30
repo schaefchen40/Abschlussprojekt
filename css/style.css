@@ -81,7 +81,7 @@ span.soundText{
     font-family: "Courier new", Times, serif;
 }
 
-div#soundInfoOszi, #soundInfoPiano{
+div#soundInfoOszi, #soundInfoPiano, #soundInfo{
     position: absolute;
     height: 150px;
     width: 220px;
@@ -101,6 +101,7 @@ div#soundInfoOszi, #soundInfoPiano{
 .blob:active {
     fill: rgb(255, 123, 0);
 }
+
 
 
 
