@@ -3,13 +3,11 @@ var canvas;
 var frameCtx;
 var fft;
 var ampli;
-//var media;
 var w;
 var spectMax;
 var visual;
 var rateSlider, volumeSlider;
 var time;
-//var x;
 
 //set predefined songs. they will be chosen randomly
 var array = ["./media/wolke.mp3","./media/503.mp3","./media/ziemlichbestefreunde.mp3","./media/goldenyears.mp3"];
@@ -228,7 +226,7 @@ function draw() {
         }   
         noFill();
         beginShape();
-        stroke(255,0,0); // waveform is red
+        stroke(184, 184, 184);
         strokeWeight(1);
         for(var i = 0; i < waveform.length; i++){
             var x = map(i, 0, waveform.length, 0, width);
