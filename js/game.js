@@ -348,6 +348,10 @@ window.addEventListener("keydown",(event) =>{
     console.log("Key pressed: " + event.key + " -> " + event.which);
     var key1 = event.which;
     var key2 = event.keyCode;
+    if (key1 == 0|| key2 == 0){
+        alert("Oops. You can't play that sound! \nIf you are using Firefox please switch to another browser for key support.\n" + 
+        "If you are already using another browser, please contact the administrator of your trust.");
+    }
     if(key1 == diatonKey[0][0] || key2 == diatonKey[0][0]){
         osci.freq(midiToFreq(diaton[0][0]));
         document.getElementById("soundValueNote").innerText = diaton[0][1];
