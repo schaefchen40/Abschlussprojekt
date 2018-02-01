@@ -18,7 +18,7 @@ if($_FILES["fileToUpload"]["name"] !== ""){                                     
         echo "Sorry, file already exists.";
         $uploadOk = 0;
     }
-    if ($_FILES["fileToUpload"]["size"] > 4000000) {                            //check file size (e.g. limit to 4 GB)
+    if ($_FILES["fileToUpload"]["size"] > 8000000) {                            //check file size (e.g. limit to 4 GB)
         echo "Sorry, your file is too large.";
         $uploadOk = 0;
     }
