@@ -346,91 +346,91 @@ function mouseReleased() {
 
 window.addEventListener("keydown",(event) =>{
     console.log("Key pressed: " + event.key + " -> " + event.which);
-    var key1 = event.which;
+    var key1 = event.key;
     var key2 = event.keyCode;
-    if (key1 == 0|| key2 == 0){
-        alert("Oops. You can't play that sound! \nIf you are using Firefox please switch to another browser for key support.\n" + 
-        "If you are already using another browser, please contact the administrator of your trust.");
-    }
-    if(key1 == diatonKey[0][0] || key2 == diatonKey[0][0]){
+    // if (key1 == 0|| key2 == 0){
+    //     alert("Oops. You can't play that sound! \nIf you are using Firefox please switch to another browser for key support.\n" + 
+    //     "If you are already using another browser, please contact the administrator of your trust.");
+    // }
+    if(key1 == diatonKey[0][1] || key2 == diatonKey[0][0]){
         osci.freq(midiToFreq(diaton[0][0]));
         document.getElementById("soundValueNote").innerText = diaton[0][1];
         hit = true; 
-    }else if(key1 == diatonKey[1][0] || key2 == diatonKey[1][0]) {
+    }else if(key1 == diatonKey[1][1] || key2 == diatonKey[1][0]) {
         osci.freq(midiToFreq(diaton[1][0]));
         document.getElementById("soundValueNote").innerText = diaton[1][1];
         hit = true;
-    }else if(key1 == diatonKey[2][0] || key2 == diatonKey[2][0]) {
+    }else if(key1 == diatonKey[2][1] || key2 == diatonKey[2][0]) {
         osci.freq(midiToFreq(diaton[2][0]));
         document.getElementById("soundValueNote").innerText = diaton[2][1];
         hit = true;
-    }else if(key1 == diatonKey[3][0] || key2 == diatonKey[3][0]) {
+    }else if(key1 == diatonKey[3][1] || key2 == diatonKey[3][0]) {
         osci.freq(midiToFreq(diaton[3][0]));
         document.getElementById("soundValueNote").innerText = diaton[3][1];
         hit = true; 
-    }else if(key1 == diatonKey[4][0] || key2 == diatonKey[4][0]) {
+    }else if(key1 == diatonKey[4][1] || key2 == diatonKey[4][0]) {
         osci.freq(midiToFreq(diaton[4][0]));
         document.getElementById("soundValueNote").innerText = diaton[4][1];
         hit = true; 
-    }else if(key1 == diatonKey[5][0] || key2 == diatonKey[5][0]) {
+    }else if(key1 == diatonKey[5][1] || key2 == diatonKey[5][0]) {
         osci.freq(midiToFreq(diaton[5][0]));
         document.getElementById("soundValueNote").innerText = diaton[5][1];
         hit = true;
-    }else if(key1 == diatonKey[6][0] || key2 == diatonKey[6][0]) {
+    }else if(key1 == diatonKey[6][1] || key2 == diatonKey[6][0]) {
         osci.freq(midiToFreq(diaton[6][0]));
         document.getElementById("soundValueNote").innerText = diaton[6][1];
         hit = true;
-    }else if(key1 == diatonKey[7][0] || key2 == diatonKey[7][0]) {
+    }else if(key1 == diatonKey[7][1] || key2 == diatonKey[7][0]) {
         osci.freq(midiToFreq(diaton[7][0]));
         document.getElementById("soundValueNote").innerText = diaton[7][1];
         hit = true; 
-    }else if(key1 == diatonKey[8][0] || key2 == diatonKey[8][0]) {
+    }else if(key1 == diatonKey[8][1] || key2 == diatonKey[8][0]) {
         osci.freq(midiToFreq(diaton[8][0]));
         document.getElementById("soundValueNote").innerText = diaton[8][1];
         hit = true; 
-    }else if(key1 == diatonKey[9][0] || key2 == diatonKey[9][0]) {
+    }else if(key1 == diatonKey[9][1] || key2 == diatonKey[9][0]) {
         osci.freq(midiToFreq(diaton[9][0]));
         document.getElementById("soundValueNote").innerText = diaton[9][1];
         hit = true; 
-    }else if(key1 == diatonKey[10][0] || key2 == diatonKey[10][0]) {
+    }else if(key1 == diatonKey[10][1] || key2 == diatonKey[10][0]) {
         osci.freq(midiToFreq(diaton[10][0]));
         document.getElementById("soundValueNote").innerText = diaton[10][1];
         hit = true; 
-    }else if(key1 == diatonKey[11][0] || key2 == diatonKey[11][0]) {
+    }else if(key1 == diatonKey[11][1] || key2 == diatonKey[11][0]) {
         osci.freq(midiToFreq(diaton[11][0]));
         document.getElementById("soundValueNote").innerText = diaton[11][1];
         hit = true; 
     }
 
-    if(key1 == pentatonKey[0][0] || key2 == pentatonKey[0][0]){
+    if(key1 == pentatonKey[0][1] || key2 == pentatonKey[0][0]){
         osci.freq(midiToFreq(pentaton[0][0]));
         document.getElementById("soundValueNote").innerText = pentaton[0][1];
         hit = true; 
-    }else if(key1 == pentatonKey[1][0] || key2 == pentatonKey[1][0]) {
+    }else if(key1 == pentatonKey[1][1] || key2 == pentatonKey[1][0]) {
         osci.freq(midiToFreq(pentaton[1][0]));
         document.getElementById("soundValueNote").innerText = pentaton[1][1];
         hit = true;
-    }else if(key1 == pentatonKey[2][0] || key2 == pentatonKey[2][0]) {
+    }else if(key1 == pentatonKey[2][1] || key2 == pentatonKey[2][0]) {
         osci.freq(midiToFreq(pentaton[2][0]));
         document.getElementById("soundValueNote").innerText = pentaton[2][1];
         hit = true;
-    }else if(key1 == pentatonKey[3][0] || key2 == pentatonKey[3][0]) {
+    }else if(key1 == pentatonKey[3][1] || key2 == pentatonKey[3][0]) {
         osci.freq(midiToFreq(pentaton[3][0]));
         document.getElementById("soundValueNote").innerText = pentaton[3][1];
         hit = true; 
-    }else if(key1 == pentatonKey[4][0] || key2 == pentatonKey[4][0]) {
+    }else if(key1 == pentatonKey[4][1] || key2 == pentatonKey[4][0]) {
         osci.freq(midiToFreq(pentaton[4][0]));
         document.getElementById("soundValueNote").innerText = pentaton[4][1];
         hit = true; 
-    }else if(key1 == pentatonKey[5][0] || key2 == pentatonKey[5][0]) {
+    }else if(key1 == pentatonKey[5][1] || key2 == pentatonKey[5][0]) {
         osci.freq(midiToFreq(pentaton[5][0]));
         document.getElementById("soundValueNote").innerText = pentaton[5][1];
         hit = true; 
-    }else if(key1 == pentatonKey[6][0] || key2 == pentatonKey[6][0]) {
+    }else if(key1 == pentatonKey[6][1] || key2 == pentatonKey[6][0]) {
         osci.freq(midiToFreq(pentaton[6][0]));
         document.getElementById("soundValueNote").innerText = pentaton[6][1];
         hit = true;
-    }else if(key1 == pentatonKey[7][0] || key2 == pentatonKey[6][1]) {
+    }else if(key1 == pentatonKey[7][1] || key2 == pentatonKey[6][1]) {
         osci.freq(midiToFreq(pentaton[7][0]));
         document.getElementById("soundValueNote").innerText = pentaton[7][1];
         hit = true; 
