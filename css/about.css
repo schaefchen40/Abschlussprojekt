@@ -1,7 +1,6 @@
 body{   
     font-variant: small-caps;
     animation: colorchange 224s; /* animation-name followed by duration in seconds*/
-    /* you could also use milliseconds (ms) or something like 2.5s */
     -webkit-animation: colorchange 224s; /* Chrome and Safari */
 }
 div.content{
@@ -43,7 +42,6 @@ span{
     float: right;
     padding: 0 30px 0 0;
 }
-
 
 @keyframes colorchange{ 
     0%   {background: rgb(0, 0, 0);}

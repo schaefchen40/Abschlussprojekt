@@ -6,7 +6,7 @@ if($_FILES["fileToUpload"]["name"] !== ""){                                     
     $songFileType = pathinfo($target_file,PATHINFO_EXTENSION);
 
     if(isset($_POST["submit"])) {
-        $check = filesize($_FILES["fileToUpload"]["tmp_name"]);                 //throws an error when troubles with file occur 
+        $check = filesize($_FILES["fileToUpload"]["name"]);                     //throws an error when troubles with file occur 
         if($check !== false) {
             $uploadOk = 1;
         } else {
