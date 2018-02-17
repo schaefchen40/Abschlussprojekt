@@ -138,6 +138,7 @@ function draw() {
         var mean_freq_index = spectralCentroid/(nyquist/spectrum.length);      
        // var freqPos = (width / spectMax) * mouseX;
         var freqPos = map(mouseX, 0, width, 0, 20000);
+        
         document.getElementById("soundValueFrequency").innerText= round(freqPos) +" Hz"; 
         
         if(textCount == 20){
